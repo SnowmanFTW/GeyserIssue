@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "7.1.0"
+}
+
+jar {
+    manifest {
+        // WARNING: change the 'Main-Class' value
+        attributes 'Main-Class': 'me.snowman.prisonstom.PrisonStom',
+                "Multi-Release": true
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+group 'me.snowman'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spongepowered.org/maven' }
+    maven { url 'https://repo.velocitypowered.com/snapshots/' }
+    maven { url 'https://libraries.minecraft.net' }
+    maven { url 'https://jitpack.io' }
+}
+dependencies {
+    implementation 'com.github.Minestom:Minestom:-SNAPSHOT'
+}
+
+test {
+    useJUnitPlatform()
+}
